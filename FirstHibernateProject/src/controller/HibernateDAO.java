@@ -1,0 +1,78 @@
+package controller;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import model.Car;
+
+public class HibernateDAO {
+	
+	SessionFactory factory = new Configuration().configure().buildSessionFactory();
+	
+	public boolean snimiAutoUbazu (Car car) {
+		
+		Session sesija = factory.openSession();
+		sesija.beginTransaction();
+		
+		try {
+			
+			sesija.save(car);
+			
+			sesija.getTransaction().commit();
+			
+			return true;
+			
+		} catch (Exception e) {
+			sesija.getTransaction().rollback();
+			return false;
+		} 
+		
+		finally {
+		sesija.close();
+		}
+		
+		
+		
+	}
+
+	
+	
+	
+	
+
+
+
+public Car vratiAuto (int id) {
+	
+	Session sesija = factory.openSession();
+	sesija.beginTransaction();
+	
+	Car car = null;
+	try {
+		
+		car = sesija.get(Car.class, id);
+		
+		
+		sesija.getTransaction().commit();
+		return car;
+		
+		
+	} catch (Exception e) {
+		sesija.getTransaction().rollback();
+		return car;
+	} 
+	
+	finally {
+	sesija.close();
+	
+	}
+	
+	
+}
+
+
+
+
+
+}
