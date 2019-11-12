@@ -6,6 +6,9 @@ import org.hibernate.cfg.Configuration;
 
 import controller.HibernateDAO;
 import model.Car;
+import model.User;
+import model.VisitCard;
+import model.VrstaVozila;
 
 public class GlavnaHibernateKlasa {
 
@@ -13,23 +16,33 @@ public class GlavnaHibernateKlasa {
 		
 		HibernateDAO dao = new HibernateDAO();
 		
-		//Car car = new Car("maserati", "ghilbi", 2016, 0.18, true );
-		//dao.snimiAutoUbazu(car);
+		Car car = new Car("land rover", "discovery", 2018, 39990, false,VrstaVozila.TERENAC);
 		
-		/*
-		 * Car car = dao.vratiAuto(2); dao.updateCarPrice(car.getIdCar(), 1800000);
-		 * System.out.println("Uzeo si auto " + car.getMarka() + " " + car.getModel());
-		 * System.out.println("Nova cena je: " + car.getCena());
-		 */
 		
-		if(dao.deleteCar(2)) {
-			System.out.println("Obrisan je auto");
-		}else {
-			System.out.println("Nije obrisan auto");
-		}
+		VisitCard visitCard = new VisitCard();
+		visitCard.setIme("ruzica");
+		visitCard.setEmail("ruza@gmail.com");
+		visitCard.setBrojTelefona("0641234567");
+		
+		User user = new User();
+		user.setUserName("ruza");
+		user.setPassword("ruzaprogramer123");
+		user.setNovcanik(100000);
+		user.setVisitCard(visitCard);
+		
+		
+		dao.snimiAutoUbazu(car);
+		dao.snimiUseraUbazu(user);
+		
+		
+		
+		
 		
 		
 
 	}
-
+		
+		
+		
+		
 }
