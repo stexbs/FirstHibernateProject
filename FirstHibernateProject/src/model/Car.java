@@ -6,9 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-
 public class Car {
-	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,20 +17,21 @@ public class Car {
 	private double cena;
 	private boolean registracija;
 	
-	
 	public Car() {
 		
 	}
 	
-	public Car(String marka, String model, int godiste, double cena, boolean registracija) {
-		this.marka=marka;
-		this.model=model;
-		this.godiste=godiste;
-		this.cena=cena;
-		this.registracija=registracija;
+	public Car(String marka, String model , int godiste , double cena, boolean registracija) {
+		
+		this.marka = marka;
+		this.model = model;
+		this.cena = cena;
+		this.godiste = godiste;
+		this.registracija = registracija;
+		
 	}
 	
-
+	
 	
 	public int getIdCar() {
 		return idCar;
@@ -72,7 +71,6 @@ public class Car {
 	public void setRegistracija(boolean registracija) {
 		this.registracija = registracija;
 	}
-	
 	
 	
 	
