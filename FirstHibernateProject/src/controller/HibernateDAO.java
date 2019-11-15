@@ -32,7 +32,7 @@ public class HibernateDAO {
 	}
 	
 	
-public boolean snimiUseraUbazu(User user) {
+	public boolean snimiUseraUbazu(User user) {
 		
 		Session sesija = factory.openSession();
 			sesija.beginTransaction();
@@ -48,8 +48,6 @@ public boolean snimiUseraUbazu(User user) {
 				sesija.close();
 			}	
 	}
-	
-	
 	
 	
 	public Car vratiAuto(int id) {
@@ -106,6 +104,38 @@ public boolean snimiUseraUbazu(User user) {
 		}finally {
 			sesija.close();	
 		}	
+	}
+
+	
+	public  void linkujUseraIauto (int idCar, int idUserCar) {
+		
+		
+		Session sesija = factory.openSession();
+		sesija.beginTransaction();
+		
+		Car car;
+		User user;
+		
+		try {		
+			car = sesija.get(Car.class, idCar);
+			user = sesija.get(User.class, idUserCar);
+			
+			
+			car.setKorisnik(user);
+			user.setAuto(car);
+			
+			
+			sesija.update(user);
+			sesija.update(car);
+		
+			sesija.getTransaction().commit();
+		} catch (Exception e) {
+			sesija.getTransaction().rollback();
+			
+		}finally {
+			sesija.close();	
+		}	
+		
 	}
 	
 	
