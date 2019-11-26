@@ -5,6 +5,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -18,16 +19,11 @@ public class Car {
 	private int godiste;
 	private double cena;
 	private boolean registracija;
-	
-	
 	@Enumerated
 	private VrstaVozila vrstaVozila;
-	
-	@OneToOne
+	@ManyToOne
 	private User korisnik;
-	
-	
-	
+
 	public User getKorisnik() {
 		return korisnik;
 	}
@@ -49,8 +45,6 @@ public class Car {
 		this.registracija = registracija;
 		this.vrstaVozila = vrstaVozila;
 	}
-	
-	
 	
 	
 	

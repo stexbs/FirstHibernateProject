@@ -1,44 +1,42 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "korisnik")
+@Table(name = "korisnik")
 public class User {
-	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idUser;
-	@Column (name ="user_name")
+	@Column(name = "user_name")
 	private String userName;
 	private String password;
 	private double novcanik;
-	
 	@Embedded
 	private VisitCard visitCard;
+	@OneToMany(fetch = FetchType.EAGER)
+	private List<Car> automobili = new ArrayList<Car>();
 	
-	@OneToOne
-	private Car auto;
-	
-	
-	
-	
-	
-	
-	public Car getAuto() {
-		return auto;
+	public List<Car> getAutomobili() {
+		return automobili;
 	}
-	public void setAuto(Car auto) {
-		this.auto = auto;
+	public void setAutomobili(List<Car> automobili) {
+		this.automobili = automobili;
 	}
+	
 	public VisitCard getVisitCard() {
 		return visitCard;
 	}
@@ -69,11 +67,6 @@ public class User {
 	public void setNovcanik(double novcanik) {
 		this.novcanik = novcanik;
 	}
-	
-	
-	
-	
-	
 	
 	
 

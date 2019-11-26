@@ -1,5 +1,8 @@
 package automobili;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import controller.HibernateDAO;
 import model.Car;
 import model.User;
@@ -12,8 +15,38 @@ public class GlavnaHibernateKlasa {
 		
 		HibernateDAO dao = new HibernateDAO();
 		
-		dao.linkujUseraIauto(1, 1);
+		User user = dao.vratiUsera(1);
+		System.out.println("Zdravo "  +user.getUserName());
 		
+		dao.izlistajAutomobile(user);
+		
+		/*
+		 * Car auto1 = dao.vratiAuto(2); Car auto2 = dao.vratiAuto(3); Car auto3 =
+		 * dao.vratiAuto(5);
+		 * 
+		 * List<Car> ruziniAutomobili = new ArrayList<Car>();
+		 * 
+		 * ruziniAutomobili.add(auto1); ruziniAutomobili.add(auto2);
+		 * ruziniAutomobili.add(auto3);
+		 * 
+		 * 
+		 * if(dao.daLiUserImaDovoljnoParaZaAutomobile(user, ruziniAutomobili)) {
+		 * 
+		 * dao.spojiUseraIcar(user, ruziniAutomobili); }
+		 */
+		
+		
+		
+		/*
+		 * Car car1 = new Car("crysler","300c",2019,35000,false,VrstaVozila.PUTNICKO);
+		 * Car car2 = new Car("dodge","caliber",2017,10000,false,VrstaVozila.PUTNICKO);
+		 * Car car3 = new Car("lexus","lc500",2019,110000,true,VrstaVozila.PUTNICKO);
+		 * Car car4 = new Car("Lada","niva",2019,19000,false,VrstaVozila.TERENAC);
+		 * 
+		 * dao.snimiAutoUbazu(car1); dao.snimiAutoUbazu(car2); dao.snimiAutoUbazu(car3);
+		 * dao.snimiAutoUbazu(car4);
+		 */
+
 		
 		/*
 		 * Car car = new Car("land rover",
@@ -28,9 +61,9 @@ public class GlavnaHibernateKlasa {
 		 * user.setVisitCard(visitCard);
 		 * 
 		 * 
-		 * 
 		 * dao.snimiUseraUbazu(user); dao.snimiAutoUbazu(car);
 		 */
+		
 		
 
 	}
