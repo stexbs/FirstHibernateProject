@@ -10,8 +10,5 @@ public enum VrstaVozila {
 	SUV,
 	KARAVAN,
 	TERENAC;
-	
-	
-	
 
 }

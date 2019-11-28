@@ -5,13 +5,9 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class VisitCard {
 	
-	
 	private String ime;
 	private String brojTelefona;
 	private String email;
-	
-	
-	
 	
 	public String getIme() {
 		return ime;
@@ -31,12 +27,6 @@ public class VisitCard {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 

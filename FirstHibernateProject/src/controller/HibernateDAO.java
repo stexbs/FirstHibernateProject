@@ -171,13 +171,15 @@ public class HibernateDAO {
 		user.setAutomobili(listaAutomobila);
 		
 		double krajnjaCena = 0;
-		for(Car car: listaAutomobila) {	
-			krajnjaCena += car.getCena();
-		}
-		
-		user.setNovcanik(user.getNovcanik() - krajnjaCena);
-		
-		try {		
+
+		try {	
+			for(Car car: listaAutomobila) {	
+				car.setKorisnik(user);
+				sesija.update(car);
+				krajnjaCena += car.getCena();
+			}
+			user.setNovcanik(user.getNovcanik() - krajnjaCena);
+			
 			sesija.update(user);
 			sesija.getTransaction().commit();
 			System.out.println("Sve OK");
@@ -190,14 +192,21 @@ public class HibernateDAO {
 	}
 	
 	
-	
 	public void izlistajAutomobile(User user) {
 		Session sesija = factory.openSession();
 		sesija.beginTransaction();
 		
 		List<Car> automobili = new ArrayList<Car>();
 		
-		try {	
+		try {
+			//lazy initaialization - rucno preuzimanje liste
+			
+			
+			/*
+			 * User u = sesija.get(User.class, user.getIdUser());
+			 * //u.getAutomobili().size(); Hibernate.initialize(u);
+			 */
+	
 			automobili = user.getAutomobili();
 			
 			System.out.println("Korisnik " + user.getUserName() + " je kupio: ");
