@@ -22,14 +22,16 @@ public class GlavnaHibernateKlasa {
 		
 		
 		
-		  User kupac = dao.vratiUsera(4);
-		  
-		  Car car1 = dao.vratiAuto(1); Car car2 = dao.vratiAuto(2);
-		  
-		  List<Car> automobili = new ArrayList<Car>(); automobili.add(car1);
-		  automobili.add(car2);
-		  
-		  dao.spojiUseraIcar(kupac, automobili);
+		/*
+		 * User kupac = dao.vratiUsera(4);
+		 * 
+		 * Car car1 = dao.vratiAuto(1); Car car2 = dao.vratiAuto(2);
+		 * 
+		 * List<Car> automobili = new ArrayList<Car>(); automobili.add(car1);
+		 * automobili.add(car2);
+		 * 
+		 * dao.spojiUseraIcar(kupac, automobili);
+		 */
 		 
 		 
 		
